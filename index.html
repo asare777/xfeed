@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X (Twitter) Feed Layout</title>
+
+<style>
+/* =========================
+   CSS VARIABLES (THEME)
+========================= */
+:root {
+  --bg: #000000;
+  --card-bg: #16181c;
+  --border: #2f3336;
+  --text: #e7e9ea;
+  --muted: #71767b;
+  --accent: #1d9bf0;
+}
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   MAIN GRID LAYOUT
+========================= */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =========================
+   LEFT SIDEBAR
+========================= */
+.sidebar {
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* X LOGO */
+.x-logo {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* NAV ITEMS */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background: var(--card-bg);
+}
+
+/* POST BUTTON */
+.tweet-btn {
+  margin-top: 20px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+/* =========================
+   FEED AREA
+========================= */
+.feed {
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+/* FEED HEADER (STICKY) */
+.feed-header {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.9);
+  padding: 15px;
+  font-weight: bold;
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================
+   TWEET CARD
+========================= */
+.tweet {
+  display: flex;
+  gap: 12px;
+  padding: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  background: #444;
+  border-radius: 50%;
+}
+
+.tweet-content {
+  flex: 1;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.handle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.tweet-text {
+  margin: 5px 0 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =========================
+   RIGHT SIDEBAR
+========================= */
+.trends {
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.trend-box {
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 16px;
+}
+
+.trend {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.trend:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .trends {
+    display: none;
+  }
+
+  .nav-item span {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="x-logo">𝕏</div>
+
+    <div class="nav-item">🏠 <span>Home</span></div>
+    <div class="nav-item">🔍 <span>Explore</span></div>
+    <div class="nav-item">🔔 <span>Notifications</span></div>
+    <div class="nav-item">✉️ <span>Messages</span></div>
+
+    <div class="tweet-btn">Post</div>
+  </aside>
+
+  <!-- FEED -->
+  <main class="feed">
+    <div class="feed-header">Home</div>
+
+    <div class="tweet">
+      <div class="avatar"></div>
+      <div class="tweet-content">
+        <div>
+          <span class="username">Tech Hub</span>
+          <span class="handle">@techhub · 1h</span>
+        </div>
+        <div class="tweet-text">
+          Practicing real-world layouts using CSS Grid and Flexbox 🚀
+        </div>
+        <div class="actions">
+          <span>💬</span>
+          <span>🔁</span>
+          <span>❤️</span>
+          <span>📤</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tweet">
+      <div class="avatar"></div>
+      <div class="tweet-content">
+        <div>
+          <span class="username">Web Designer</span>
+          <span class="handle">@designer · 3h</span>
+        </div>
+        <div class="tweet-text">
+          Recreating X’s layout helps master professional UI structure.
+        </div>
+        <div class="actions">
+          <span>💬</span>
+          <span>🔁</span>
+          <span>❤️</span>
+          <span>📤</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="trends">
+    <div class="trend-box">
+      <strong>Trends for you</strong>
+      <div class="trend">#WebDesign</div>
+      <div class="trend">#CSSGrid</div>
+      <div class="trend">#Frontend</div>
+      <div class="trend">#TechHub</div>
+    </div>
+  </aside>
+
+</div>
+
+</body>
+</html>
